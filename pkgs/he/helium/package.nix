@@ -1,4 +1,6 @@
 {
+  nix-update-script,
+
   fetchurl,
   lib,
   makeWrapper,
@@ -275,15 +277,12 @@
     '';
   });
 
-  passthru.updateScript = ./update.sh;
+  passthru.updateScript = nix-update-script { };
 
   meta = {
     description = "bullshit-free web browser, wip";
     homepage = "https://github.com/imputnet/helium-chromium";
     license = lib.licenses.gpl3;
-    maintainers = with lib.maintainers; [
-      aylac
-    ];
     platforms = ["x86_64-linux"];
     sourceProvenance = with lib.sourceTypes; [binaryNativeCode];
     mainProgram = "helium";
