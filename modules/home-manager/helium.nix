@@ -53,7 +53,7 @@
 
             updateUrl = mkOption {
               type = str;
-              default = "https://clients2.google.com/service/update2/crx";
+              default = "https://services.helium.imput.net/ext";
               description = ''
                 URL of the extension's update manifest XML file.
               '';
