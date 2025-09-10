@@ -37,7 +37,7 @@
       _class = class;
       _file = "${self.outPath}/flake.nix#${class}Modules.${name}";
 
-      imports = [(import file {tgirlpkgsSelf = self;})];
+      imports = [(import file)];
     };
   in {
     packages = forAllSystems outputSystems (
