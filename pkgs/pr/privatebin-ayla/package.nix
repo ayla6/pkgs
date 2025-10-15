@@ -6,13 +6,13 @@
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "privatebin-ayla";
-  version = "master";
+  version = "1";
 
   src = fetchFromGitHub {
     owner = "ayla6";
     repo = "PrivateBin";
     rev = finalAttrs.version;
-    sha256 = "sha256-wWKZB1MfyHURX+vO6ihwESVB+JubfQWGFS3+NiwmFL4=";
+    sha256 = "sha256-pg1DpbWxYMNAvXZcE+SsdxWW4Av6oM8S0jwEq9ZACGY=";
   };
 
   installPhase = ''
