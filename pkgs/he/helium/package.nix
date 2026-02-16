@@ -161,11 +161,11 @@
 
   linux = stdenvNoCC.mkDerivation (finalAttrs: {
     inherit pname meta passthru;
-    version = "0.8.5.1";
+    version = "0.9.1.1";
 
     src = fetchurl {
       url = "https://github.com/imputnet/helium-linux/releases/download/${finalAttrs.version}/helium-${finalAttrs.version}-x86_64_linux.tar.xz";
-      hash = "sha256-/cp201tiw2N+xsj89Ms06efJyYnfgc04uoJnvsjDUog=";
+      hash = "sha256-B+2QNL32HWKPnc2sXiq8nz0Tz2TYZaBgGjDFSqu3nDo=";
     };
 
     strictDeps = false;
