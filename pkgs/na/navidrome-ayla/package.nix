@@ -17,7 +17,7 @@
   versionCheckHook,
 }:
 buildGoModule (finalAttrs: {
-  pname = "navidrome";
+  pname = "navidrome-ayla";
   version = "0.0.1";
 
   src = fetchFromGitHub {
