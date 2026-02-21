@@ -18,13 +18,13 @@
 }:
 buildGoModule (finalAttrs: {
   pname = "navidrome-ayla";
-  version = "0.0.1";
+  version = "0.0.2";
 
   src = fetchFromGitHub {
     owner = "ayla6";
     repo = "navidrome";
     rev = "v${finalAttrs.version}";
-    hash = "sha256-D5klksBww/lp/hEcXpLaGHZjdN+ED4hComqgtQ7e5+I=";
+    hash = "sha256-UmNLvFPZQ5IH/yXqWo8uwdoYk49FTzcELpcxdwmznv4=";
   };
 
   vendorHash = "sha256-BMqfBS5ssL1OhQEoBHC6G75sbb6jykdlz2mkJQGpMd8=";
@@ -96,9 +96,6 @@ buildGoModule (finalAttrs: {
     homepage = "https://github.com/ayla6/navidrome";
     license = lib.licenses.gpl3Only;
     sourceProvenance = with lib.sourceTypes; [fromSource];
-    maintainers = with lib.maintainers; [
-      ayla6
-    ];
     # Broken on Darwin: sandbox-exec: pattern serialization length exceeds maximum (NixOS/nix#4119)
     broken = stdenv.hostPlatform.isDarwin;
   };
