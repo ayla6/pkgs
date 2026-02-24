@@ -9,6 +9,9 @@
   pkg-config,
   stdenv,
   ffmpeg-headless,
+  libavif,
+  libjxl,
+  libwebp,
   taglib,
   zlib,
   nixosTests,
@@ -18,23 +21,23 @@
 }:
 buildGoModule (finalAttrs: {
   pname = "navidrome-ayla";
-  version = "0.0.2";
+  version = "0.0.3";
 
   src = fetchFromGitHub {
     owner = "ayla6";
     repo = "navidrome";
     rev = "v${finalAttrs.version}";
-    hash = "sha256-UmNLvFPZQ5IH/yXqWo8uwdoYk49FTzcELpcxdwmznv4=";
+    hash = "sha256-ATAXqaT8O5YlhQuf4djNGiAeqe323E9fgtPjh/3M6UI=";
   };
 
-  vendorHash = "sha256-BMqfBS5ssL1OhQEoBHC6G75sbb6jykdlz2mkJQGpMd8=";
+  vendorHash = "sha256-0nNPbSTy9HVYWZ1+2aGHXfJ+xAZAER+nK2+J2Qfrzoc=";
 
   npmRoot = "ui";
 
   npmDeps = fetchNpmDeps {
     inherit (finalAttrs) src;
     sourceRoot = "${finalAttrs.src.name}/ui";
-    hash = "sha256-EA2WM7xaqP7rS0pjx+yXwpjdauaduvDefmFH73eByxI=";
+    hash = "sha256-vAPIFx1r4Pka/b3SPF1OhAFmZCj7rmPuihKcauURDik=";
   };
 
   nativeBuildInputs = [
@@ -82,7 +85,12 @@ buildGoModule (finalAttrs: {
 
   postFixup = lib.optionalString ffmpegSupport ''
     wrapProgram $out/bin/navidrome \
-      --prefix PATH : ${lib.makeBinPath [ffmpeg-headless]}
+      --prefix PATH : ${lib.makeBinPath [
+      ffmpeg-headless
+      libavif
+      libjxl
+      libwebp
+    ]}
   '';
 
   passthru = {
