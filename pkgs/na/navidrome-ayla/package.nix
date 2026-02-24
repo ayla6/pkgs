@@ -66,7 +66,9 @@ buildGoModule (finalAttrs: {
     "-X github.com/navidrome/navidrome/consts.gitTag=v${finalAttrs.version}"
   ];
 
-  CGO_CFLAGS = lib.optionals stdenv.cc.isGNU ["-Wno-return-local-addr"];
+  env = lib.optionalAttrs stdenv.cc.isGNU {
+    CGO_CFLAGS = toString ["-Wno-return-local-addr"];
+  };
 
   postPatch = ''
     patchShebangs ui/bin/update-workbox.sh
@@ -78,6 +80,7 @@ buildGoModule (finalAttrs: {
 
   tags = [
     "netgo"
+    "sqlite_fts5"
   ];
 
   nativeInstallCheckInputs = [versionCheckHook];
