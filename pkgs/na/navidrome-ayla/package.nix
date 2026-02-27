@@ -21,16 +21,16 @@
 }:
 buildGoModule (finalAttrs: {
   pname = "navidrome-ayla";
-  version = "0.0.3";
+  version = "0.0.4";
 
   src = fetchFromGitHub {
     owner = "ayla6";
     repo = "navidrome";
     rev = "v${finalAttrs.version}";
-    hash = "sha256-ATAXqaT8O5YlhQuf4djNGiAeqe323E9fgtPjh/3M6UI=";
+    hash = "sha256-YE1tIzDnfWmVbqb7Zz2Pfs3a5gqu9u0Czhj2uECDNkE=";
   };
 
-  vendorHash = "sha256-0nNPbSTy9HVYWZ1+2aGHXfJ+xAZAER+nK2+J2Qfrzoc=";
+  vendorHash = "sha256-eDDYqEhTWEU/WaDMxKyM2c2ox6GYQh4v3oSwFZmY+9Y=";
 
   npmRoot = "ui";
 
