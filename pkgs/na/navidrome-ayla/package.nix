@@ -21,13 +21,13 @@
 }:
 buildGoModule (finalAttrs: {
   pname = "navidrome-ayla";
-  version = "0.0.6";
+  version = "0.0.6-unstable-2026-03-16";
 
   src = fetchFromGitHub {
     owner = "ayla6";
     repo = "navidrome";
-    rev = "v${finalAttrs.version}";
-    hash = "sha256-zCacniup+zXyI63h8NNW3Wcvv9yDSNv6PNvfVKo4Lv0=";
+    rev = "43158151d57c6deb91f51493bce5a2847175bbed";
+    hash = "sha256-0rXSBsfPxeGsJGTjM0MSU2mKxNK0mWeGLb8m4p/sQCk=";
   };
 
   vendorHash = "sha256-cfyQnpHyM8FoRUQVPEezfPn7srY6Gr1kbK9RGJtqRTM=";
@@ -63,7 +63,7 @@ buildGoModule (finalAttrs: {
 
   ldflags = [
     "-X github.com/navidrome/navidrome/consts.gitSha=${finalAttrs.src.rev}"
-    "-X github.com/navidrome/navidrome/consts.gitTag=v${finalAttrs.version}"
+    "-X github.com/navidrome/navidrome/consts.gitTag=${finalAttrs.src.rev}"
   ];
 
   env = lib.optionalAttrs stdenv.cc.isGNU {
