@@ -26,8 +26,8 @@ buildGoModule (finalAttrs: {
   src = fetchFromGitHub {
     owner = "ayla6";
     repo = "navidrome";
-    rev = "460aa22eaabf8304a99021687bc5a49582f46eea";
-    hash = "sha256-cFXwsK2780FjXjuy4N9YoEVxPutwU5W8QYQraYbZSnc=";
+    rev = "c9c43ba1e43eb66f3d1aa5e333dac460e6161422";
+    hash = "sha256-PVIvNVp/W7PjNtUtEpE308pugfDl3OidE1vW+eavjGI=";
   };
 
   vendorHash = "sha256-UQYMzpdV/j7hXj/bbSqEFneGIFiA+zdHdY8nKJAbzTQ=";
@@ -95,6 +95,8 @@ buildGoModule (finalAttrs: {
       libwebp
     ]}
   '';
+
+  npmFlags = ["--legacy-peer-deps"];
 
   passthru = {
     tests.navidrome = nixosTests.navidrome;
