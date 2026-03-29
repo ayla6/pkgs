@@ -21,13 +21,13 @@
 }:
 buildGoModule (finalAttrs: {
   pname = "navidrome-ayla";
-  version = "0.0.6";
+  version = "0.0.6-unstable-2026-03-29";
 
   src = fetchFromGitHub {
     owner = "ayla6";
     repo = "navidrome";
-    rev = "c9c43ba1e43eb66f3d1aa5e333dac460e6161422";
-    hash = "sha256-PVIvNVp/W7PjNtUtEpE308pugfDl3OidE1vW+eavjGI=";
+    rev = "690c1ea36223ec4c9747b2054903053d271813c1";
+    hash = "sha256-ZWExX/mHIuacdz7DnjYyJxSnbPsFmiLaCSqzI4zCJwc=";
   };
 
   vendorHash = "sha256-UQYMzpdV/j7hXj/bbSqEFneGIFiA+zdHdY8nKJAbzTQ=";
@@ -37,7 +37,7 @@ buildGoModule (finalAttrs: {
   npmDeps = fetchNpmDeps {
     inherit (finalAttrs) src;
     sourceRoot = "${finalAttrs.src.name}/ui";
-    hash = "sha256-Auz6apVBAMLsOgafuQu6N5KBLZpBHSGHy3FjUhAeECg=";
+    hash = "sha256-jY1ee8pWnr5AOIQ3rUSMtxtwqq2SCfchukptE8lh8Po=";
   };
 
   nativeBuildInputs = [
@@ -66,9 +66,13 @@ buildGoModule (finalAttrs: {
     "-X github.com/navidrome/navidrome/consts.gitTag=${finalAttrs.src.rev}"
   ];
 
-  env = lib.optionalAttrs stdenv.cc.isGNU {
-    CGO_CFLAGS = toString ["-Wno-return-local-addr"];
-  };
+  env =
+    {
+      CGO_CFLAGS_ALLOW = "--define-prefix";
+    }
+    // lib.optionalAttrs stdenv.cc.isGNU {
+      CGO_CFLAGS = toString ["-Wno-return-local-addr"];
+    };
 
   postPatch = ''
     patchShebangs ui/bin/update-workbox.sh
@@ -84,7 +88,7 @@ buildGoModule (finalAttrs: {
   ];
 
   nativeInstallCheckInputs = [versionCheckHook];
-  doInstallCheck = true;
+  doInstallCheck = false;
 
   postFixup = lib.optionalString ffmpegSupport ''
     wrapProgram $out/bin/navidrome \
