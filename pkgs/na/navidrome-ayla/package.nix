@@ -26,8 +26,8 @@ buildGoModule (finalAttrs: {
   src = fetchFromGitHub {
     owner = "ayla6";
     repo = "navidrome";
-    rev = "c1c7c48cd54e9c8eb881ef1e1384acd44c6db820";
-    hash = "sha256-qvCHxmPFp1vrjMG7Gg1nbQZaOvn2xeuQSMfH/LyuYNA=";
+    rev = "aec95ab663cadab4bd5e5f25dc0539beff96ad97";
+    hash = "sha256-F5k51mOcP2Hxv4PX3tVAogqEzplY8R+AgdkG+kijjFw=";
   };
 
   vendorHash = "sha256-UQYMzpdV/j7hXj/bbSqEFneGIFiA+zdHdY8nKJAbzTQ=";
