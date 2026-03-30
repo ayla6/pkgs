@@ -21,7 +21,7 @@
 }:
 buildGoModule (finalAttrs: {
   pname = "navidrome-ayla";
-  version = "0.0.6-unstable-2026-03-29";
+  version = "0.0.6";
 
   src = fetchFromGitHub {
     owner = "ayla6";
